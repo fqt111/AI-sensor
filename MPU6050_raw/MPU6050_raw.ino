@@ -44,7 +44,7 @@ THE SOFTWARE.
 // // AD0 high = 0x69
 MPU6050 accelgyro;
 
-int16_t ax, ay, az;
+int16_t ax, ay, az,gx,gy,gz;
 
 #define LED_PIN 13
 bool blinkState = false;
@@ -65,20 +65,23 @@ void setup() {
     // verify connection
     Serial.println("Testing device connections...");
     Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
-    accelgyro.setFullScaleGyroRange(1000);
-    accelgyro.setFullScaleAccelRange(2);
+    accelgyro.setFullScaleGyroRange(2);
+    accelgyro.setFullScaleAccelRange(0);
     // configure Arduino LED for
     pinMode(LED_PIN, OUTPUT);
 }
 
 void loop() {
     // read raw accel/gyro measurements from device
-    accelgyro.getAcceleration(&ax, &ay, &az);
-   
+    // accelgyro.getAcceleration(&ax, &ay, &az);
+    accelgyro.getMotion6(&ax, &ay, &az,&gx, &gy, &gz);
     // display tab-separated accel x/y/z values
     Serial.print(ax); Serial.print(",");
     Serial.print(ay); Serial.print(",");
     Serial.print(az); Serial.print(",");
+    Serial.print(gx); Serial.print(",");
+    Serial.print(gy); Serial.print(",");
+    Serial.print(gz); Serial.print(",");
     Serial.println("");
 
     // blink LED to indicate activity

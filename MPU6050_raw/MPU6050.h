@@ -431,6 +431,7 @@ class MPU6050 {
         void setAccelZSelfTest(bool enabled);
         uint8_t getFullScaleAccelRange();
         void setFullScaleAccelRange(uint8_t range);
+        void getAcceleration(uint8_t range);
         uint8_t getDHPFMode();
         void setDHPFMode(uint8_t mode);
 
