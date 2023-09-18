@@ -66,7 +66,7 @@ void setup() {
     Serial.println("Testing device connections...");
     Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
     accelgyro.setFullScaleGyroRange(2);
-    accelgyro.setFullScaleAccelRange(0);
+    accelgyro.setFullScaleAccelRange(3);
     // configure Arduino LED for
     pinMode(LED_PIN, OUTPUT);
 }
